@@ -17,9 +17,9 @@ const AppNavbar = () => {
         setIsOpen(!isOpen)
     }
     return(
-        <Navbar color='dark' dark expand='sm' className='mb-5'>
+        <Navbar dark expand='sm' className='mb-5 navbar' >
         <Container>
-            <NavbarBrand href='/'>Shopping</NavbarBrand>
+            <NavbarBrand href='/' >Shopping</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
