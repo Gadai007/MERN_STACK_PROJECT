@@ -1,14 +1,14 @@
-import { GET_ITEMS, CLEAR_ERRORS } from '../actions/types'
+import { GET_ERRORS, CLEAR_ERRORS } from '../actions/types'
 
 const initialState = {
     msg: {},
     status: null,
     id: null
-}
+  }
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case GET_ITEMS:
+        case GET_ERRORS:
             return{
                 msg: action.payload.msg,
                 status: action.payload.status,
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
             }
         case CLEAR_ERRORS:
             return{
-                msg: {},
+                msg: null,
                 status: null,
                 id: null
             }
