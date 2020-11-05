@@ -8,7 +8,7 @@ import {
     REGISTER_FAIL,
     REGISTER_SUCCESS
 } from './types'
-import { returnErrors, clearErrors} from './errorActions'
+import { returnErrors} from './errorActions'
 import axios from 'axios'
 
 export const loadUser = () => (dispatch, getState) => {
@@ -55,6 +55,34 @@ export const register = ({ name, email, password }) => dispatch => {
             })
         })
 }
+
+//Login User
+
+export const login = ({ email, password }) => dispatch => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const body = JSON.stringify({ email, password})
+
+    axios.post('/api/auth', body, config)
+        .then(res => {
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch(error => {
+            dispatch(returnErrors(error.response.data, error.response.status, 'LOGIN_FAIL'))
+            dispatch({
+                type: LOGIN_FAIL,
+                
+            })
+        })
+}
+
 
 //logout user
 
